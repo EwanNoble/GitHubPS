@@ -62,7 +62,6 @@ Task Analyze {
 Task ExecuteTest {
 
     # --- Run Tests. Currently limited to help tests
-    $Timestamp = Get-date -uformat "%Y%m%d-%H%M%S"
     $TestFile = "Test-Pester.XML"
     $Parameters = @{
         PassThru = $true
@@ -189,7 +188,6 @@ Task CreateArchive {
 Task UpdateDocumentation {
 
     Write-Output "Updating Markdown help"
-    $ModuleInfo = Import-Module $ENV:BHPSModuleManifest -Global -Force -PassThru
     $FunctionsPath = "$DocsDirectory\functions"
 
     Remove-Item -Path $FunctionsPath -Recurse -Force -ErrorAction SilentlyContinue
