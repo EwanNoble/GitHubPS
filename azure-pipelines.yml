@@ -39,6 +39,7 @@ jobs:
       vmImage: "ubuntu-16.04"
     steps:
       - powershell: ./tools/build.ps1
-        displayName: "Execute Tests"
+        arguments: '-Task Test'
         pwsh: true
-        arguments: "-Task Test"
+        displayName: "Execute Tests"
+
