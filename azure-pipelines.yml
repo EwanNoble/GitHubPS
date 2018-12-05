@@ -5,18 +5,13 @@ name: $(GitVersion.FullSemVer)
 
 steps:
   - task: GitVersion@4
-    displayName: 'Run GitVersion'
+    displayName: "Run GitVersion"
 
-  - task: PowerShell@2
-    displayName: 'Run Pester tests'
-    inputs:
-      targetType: 'filePath'
-      filePath: '$(System.DefaultWorkingDirectory)\tools\Run-PesterInVSTS.ps1'
-      arguments: '-outputFile $(System.DefaultWorkingDirectory)\Test-Pester.XML'
-      continueOnError: true
+  - task: Pester@8
+    displayName: "Pester Test Runner"
 
   - task: PublishTestResults@2
-    displayName: 'Publish Pester test results'
+    displayName: "Publish Pester test results"
     inputs:
-      testRunner: 'NUnit'
+      testRunner: "NUnit"
       testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
