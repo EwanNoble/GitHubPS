@@ -1,4 +1,4 @@
-function Invoke-GitHubRestMethod() {
+function Invoke-GitHubRestMethod {
     <#
     .SYNOPSIS
     Call the GitHub API
