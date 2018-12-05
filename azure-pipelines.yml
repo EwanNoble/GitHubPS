@@ -13,7 +13,6 @@ steps:
       targetType: 'filePath'
       filePath: '$(System.DefaultWorkingDirectory)\tools\Run-PesterInVSTS.ps1'
       arguments: '-outputFile $(System.DefaultWorkingDirectory)\Test-Pester.XML'
-      pwsh: true
       continueOnError: true
 
   - task: PublishTestResults@2
