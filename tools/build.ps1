@@ -31,7 +31,7 @@ Param (
 )
 
 # --- Install dependencies
-$RequiredModules = @("BuildHelpers", "Psake", "PSScriptAnalyzer")
+$RequiredModules = @("BuildHelpers", "Psake", "PSScriptAnalyzer", "Pester")
 foreach ($Module in $RequiredModules) {
     if (!(Get-Module -Name $Module -ListAvailable)){
         Install-Module -Name $Module -Scope CurrentUser -Force
