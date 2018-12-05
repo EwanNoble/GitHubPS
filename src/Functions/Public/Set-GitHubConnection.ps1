@@ -1,4 +1,4 @@
-function Set-GitHubConnection() {
+function Set-GitHubConnection {
     <#
     .SYNOPSIS
     Sets the session GitHub connection.
