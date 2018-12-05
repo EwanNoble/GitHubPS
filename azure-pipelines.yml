@@ -2,7 +2,7 @@ pool:
   vmImage: vs2017-win2016
 
 steps:
-  - task: Pester
+  - task: Pester@8
     inputs:
       scriptFolder: $(System.DefaultWorkingDirectory)\*
       resultsFile: $(System.DefaultWorkingDirectory)\Test-Pester.XML
