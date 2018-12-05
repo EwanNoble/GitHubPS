@@ -14,7 +14,7 @@ jobs:
       - task: GitVersion@4
         displayName: "Run GitVersion"
 
-  - job: "Windows (PS5.1) Build and Test"
+  - job: "Windows_PS5.1_BuildTest"
     dependsOn: "GitVersion"
     pool:
       vmImage: "vs2017-win2016"
@@ -33,7 +33,7 @@ jobs:
           testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
         condition: succeededOrFailed()
 
-  - job: "Linux (PSCore) Test"
+  - job: "Linux_PSCore_Test"
     dependsOn: "GitVersion"
     pool:
       vmImage: "ubuntu-16.04"
