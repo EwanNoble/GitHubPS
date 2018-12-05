@@ -1,5 +1,5 @@
 # --- Validate the module manifest
-$ModulePath = (Resolve-Path -Path .\src\*.psd1).Path
+$ModulePath = (Resolve-Path -Path $PSScriptRoot\..\src\*.psd1).Path
 
 Describe -Name 'Module Tests' -Fixture {
     It -Name "The module has a valid manifest file" -Test {
