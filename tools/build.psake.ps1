@@ -66,7 +66,7 @@ Task ExecuteTest {
     $Parameters = @{
         PassThru = $true
         OutputFormat = 'NUnitXml'
-        OutputFile = "$ENV:BHProjectPath\$TestFile"
+        OutputFile = "$ENV:BHProjectPath/$TestFile"
     }
 
     Push-Location
