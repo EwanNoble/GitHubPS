@@ -9,8 +9,7 @@ steps:
 
   - task: Pester@8
     displayName: "Pester Test Runner"
-    inputs:
-      continueOnError: true
+    continueOnError: true
 
   - task: PublishTestResults@2
     displayName: "Publish Pester test results"
