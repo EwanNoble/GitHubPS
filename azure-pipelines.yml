@@ -6,6 +6,8 @@ name: $(GitVersion.MajorMinorPatch)
 steps:
   - task: GitVersion@4
     displayName: 'Run GitVersion'
+    inputs:
+      preferBundledVersion: true
 
   - task: PowerShell@2
     displayName: 'Run Pester tests'
