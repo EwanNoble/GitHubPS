@@ -18,7 +18,7 @@ steps:
     inputs:
       scriptName: tools/build.ps1
 
-    - task: PublishBuildArtifacts@1
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Release'
     inputs:
       PathtoPublish: Release
