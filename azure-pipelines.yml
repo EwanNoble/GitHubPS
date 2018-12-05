@@ -14,7 +14,7 @@ jobs:
       - task: GitVersion@4
         displayName: "Run GitVersion"
 
-  - job: "Windows_PS5.1_BuildTest"
+  - job: "Windows_PS51_BuildTest"
     dependsOn: "GitVersion"
     pool:
       vmImage: "vs2017-win2016"
