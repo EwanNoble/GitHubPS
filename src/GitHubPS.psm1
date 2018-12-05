@@ -9,7 +9,7 @@ foreach ($Publicfunction in Get-ChildItem -Path "$($PSScriptRoot)\Functions\Publ
     . $PublicFunction.FullName
 
     $BaseName = [System.IO.Path]::GetFileNameWithoutExtension($PublicFunction)
-    
+
     # --- Support DEPRECATED functions. Ensure that we are exporting only the function name
     $DeprecatedKeyword = "DEPRECATED-"
     if ($BaseName.StartsWith($DeprecatedKeyword)) {
@@ -22,7 +22,5 @@ foreach ($Publicfunction in Get-ChildItem -Path "$($PSScriptRoot)\Functions\Publ
 
 # --- Clean up variables on module removal
 $ExecutionContext.SessionState.Module.OnRemove = {
-
     Remove-Variable -Name GitHubConnection -Force -ErrorAction SilentlyContinue
-
 }
