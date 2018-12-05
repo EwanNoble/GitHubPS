@@ -1,4 +1,17 @@
 function Set-GitHubConnection() {
+<#
+    .SYNOPSIS
+    Sets the session GitHub connection.
+
+    .DESCRIPTION
+    Tests your PAT Token is valid and sets a global variable for use in future API calls within the session.
+
+    .PARAMETER OAuthToken
+    A PAT token created within GitHub
+
+    .EXAMPLE
+    Set-GitHubConnection -OAuthToken <GitHub PAT token>
+#>
     param(
         [string]$OAuthToken
     )
