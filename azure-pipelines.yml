@@ -1,13 +1,11 @@
 pool:
-  vmImage: ubuntu-16.04
+  vmImage: vs2017-win2016
 
 name: $(GitVersion.MajorMinorPatch)
 
 steps:
   - task: GitVersion@4
     displayName: 'Run GitVersion'
-    inputs:
-      preferBundledVersion: true
 
   - task: PowerShell@2
     displayName: 'Run Pester tests'
