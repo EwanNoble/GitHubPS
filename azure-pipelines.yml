@@ -24,7 +24,7 @@ jobs:
         displayName: "Publish Pester test results"
         inputs:
           testRunner: "NUnit"
-          testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
+          testResultsFiles: '**/Test-Pester.XML'
           testRunTitle: 'Windows PS5.1 Tests'
         condition: succeededOrFailed()
 
@@ -43,6 +43,6 @@ jobs:
         displayName: "Publish Pester test results"
         inputs:
           testRunner: "NUnit"
-          testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
+          testResultsFiles: '**/Test-Pester.XML'
           testRunTitle: 'Linux PSCore Tests'
         condition: succeededOrFailed()
