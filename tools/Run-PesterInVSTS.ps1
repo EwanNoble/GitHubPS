@@ -4,6 +4,7 @@ param(
 )
 Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
 Install-Module -Name Pester -Force -Verbose -Scope CurrentUser
+Install-Module -Name PSScriptAnalyzer -Force -Verbose -Scope CurrentUser
 
 Import-Module Pester
 Invoke-Pester -OutputFile $outputFile -OutputFormat NUnitXml

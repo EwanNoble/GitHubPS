@@ -50,7 +50,7 @@ Describe "Help tests for GitHubPS Private Functions" -Tags "Quality" {
 
     $Scripts = Get-ChildItem -Path $PSScriptRoot\..\src\Functions\Private\*.ps1 -File -Recurse
     $Scripts | ForEach-Object {
-        Remove-Module $_.BaseName
+        Remove-Module $_.BaseName -ErrorAction SilentlyContinue
     }
 
     foreach ($Script in $Scripts) {

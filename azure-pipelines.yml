@@ -7,7 +7,7 @@ steps:
       targetType: 'filePath'
       filePath: '$(System.DefaultWorkingDirectory)\tools\Run-PesterInVSTS.ps1'
       arguments: '-outputFile $(System.DefaultWorkingDirectory)\Test-Pester.XML'
-      errorActionPreference: 'continue'
+      continueOnError: true
 
   - task: PublishTestResults@2
     inputs:
