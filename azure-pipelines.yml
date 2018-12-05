@@ -7,18 +7,12 @@ pr:
   - master
 
 jobs:
-  - job: "GitVersion"
+  - job: "Windows_PS51_BuildTest"
     pool:
       vmImage: "vs2017-win2016"
     steps:
       - task: GitVersion@4
         displayName: "Run GitVersion"
-
-  - job: "Windows_PS51_BuildTest"
-    dependsOn: "GitVersion"
-    pool:
-      vmImage: "vs2017-win2016"
-    steps:
       - powershell: ./tools/build.ps1
         displayName: "Execute Build"
       - task: PublishBuildArtifacts@1
@@ -34,7 +28,6 @@ jobs:
         condition: succeededOrFailed()
 
   - job: "Linux_PSCore_Test"
-    dependsOn: "GitVersion"
     pool:
       vmImage: "ubuntu-16.04"
     steps:
