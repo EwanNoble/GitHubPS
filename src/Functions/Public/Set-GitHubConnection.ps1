@@ -1,5 +1,5 @@
 function Set-GitHubConnection() {
-<#
+    <#
     .SYNOPSIS
     Sets the session GitHub connection.
 
@@ -11,7 +11,12 @@ function Set-GitHubConnection() {
 
     .EXAMPLE
     Set-GitHubConnection -OAuthToken <GitHub PAT token>
+
+    .NOTES
+    Suppressed Script Analyzer rules:
+         - PSUseShouldProcessForStateChangingFunctions - The function does not alter the state of an object
 #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     param(
         [string]$OAuthToken
     )
@@ -20,8 +25,8 @@ function Set-GitHubConnection() {
 
     try {
         $UserResponse = Invoke-RestMethod -Method GET -Headers @{Authorization = "token $OAuthToken" } -Uri "https://api.github.com/user"
-        Write-Host " - Successfully logged in, welcome $($UserResponse.name)!" -ForegroundColor Green
-        $Global:GitHubConnection = $OAuthToken
+        Write-Output " - Successfully logged in, welcome $($UserResponse.name)!"
+        $Script:GitHubConnection = $OAuthToken
     }
     catch {
         if ($_.Exception.Response.StatusCode.Value__ -eq 401) {

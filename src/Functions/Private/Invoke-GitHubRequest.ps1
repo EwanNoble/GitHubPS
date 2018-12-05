@@ -27,7 +27,7 @@ function Invoke-GitHubRestMethod() {
     $BaseDomain = "api.github.com"
     $UriBuilder = New-Object System.UriBuilder -ArgumentList $Protocol, $BaseDomain, 443, $APIEndpoint
 
-    $Response = Invoke-RestMethod -Method $Method -Uri $UriBuilder.Uri.AbsoluteUri -Headers @{Authorization = "token $Global:GitHubConnection"}
+    $Response = Invoke-RestMethod -Method $Method -Uri $UriBuilder.Uri.AbsoluteUri -Headers @{Authorization = "token $Script:GitHubConnection"}
 
     return $Response
 }
