@@ -2,13 +2,14 @@ pool:
   vmImage: vs2017-win2016
 
 steps:
-  - task: Pester@1
+  - task: PowerShell@2
     inputs:
-      scriptFolder: $(System.DefaultWorkingDirectory)\*
-      resultsFile: $(System.DefaultWorkingDirectory)\Test-Pester.XML
-      run32Bit: False
+      targetType: 'filePath'
+      filePath: '$(System.DefaultWorkingDirectory)\tools\Run-PesterInVSTS.ps1'
+      arguments: '-outputFile $(System.DefaultWorkingDirectory)\Test-Pester.XML'
+      errorActionPreference: 'continue'
 
   - task: PublishTestResults@2
     inputs:
-      testRunner: NUnit
-      testResultsFiles: $(System.DefaultWorkingDirectory)\Test-Pester.XML
+      testRunner: 'NUnit'
+      testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
