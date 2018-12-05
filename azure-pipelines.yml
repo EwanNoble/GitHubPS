@@ -25,6 +25,7 @@ jobs:
         inputs:
           testRunner: "NUnit"
           testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
+          testRunTitle: 'Windows PS5.1 Tests'
         condition: succeededOrFailed()
 
   - job: "Linux_PSCore_Test"
@@ -38,3 +39,10 @@ jobs:
           filePath: ./tools/build.ps1
           arguments: "-Task Test"
           pwsh: true
+      - task: PublishTestResults@2
+        displayName: "Publish Pester test results"
+        inputs:
+          testRunner: "NUnit"
+          testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
+          testRunTitle: 'Linux PSCore Tests'
+        condition: succeededOrFailed()
