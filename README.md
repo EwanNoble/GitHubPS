@@ -1,4 +1,4 @@
-*TODO: Build Badge*
+[![Build Status](https://dev.azure.com/EwanNoble/GitHubPS/_apis/build/status/EwanNoble.GitHubPS)](https://dev.azure.com/EwanNoble/GitHubPS/_build/latest?definitionId=1)
 
 # GitHubPS
 
