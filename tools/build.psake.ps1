@@ -135,7 +135,7 @@ Task CreateArtifact {
 
     # --- Set the psd1 module version
     if ($ENV:TF_BUILD){
-        $ModuleManifestVersion = $ENV:BUILD_BUILDNUMBER.Split("-")[0]
+        $ModuleManifestVersion = $ENV:GitVersion_MajorMinorPatch
     }
     Update-Metadata -Path "$($ReleaseDirectoryPath)\$($ModuleName).psd1" -PropertyName ModuleVersion -Value $ModuleManifestVersion
 
