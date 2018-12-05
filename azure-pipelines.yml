@@ -3,14 +3,20 @@ pool:
 
 name: $(GitVersion.FullSemVer)
 
+trigger:
+- master
+
+pr:
+- master
+
 steps:
+  - task: GitVersion@4
+    displayName: "Run GitVersion"
+
   - powershell: |
       Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
       Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
     displayName: "Install PS Modules"
-
-  - task: GitVersion@4
-    displayName: "Run GitVersion"
 
   - task: Pester@8
     displayName: "Pester Test Runner"
