@@ -38,8 +38,10 @@ jobs:
     pool:
       vmImage: "ubuntu-16.04"
     steps:
-      - powershell: ./tools/build.ps1
-        arguments: '-Task Test'
-        pwsh: true
+      - task: PowerShell@2
         displayName: "Execute Tests"
-
+        inputs:
+          targetType: "filePath"
+          filePath: ./tools/build.ps1
+          arguments: "-Task Test"
+          pwsh: true
