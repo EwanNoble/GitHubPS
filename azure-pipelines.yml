@@ -13,13 +13,14 @@ steps:
   - task: GitVersion@4
     displayName: "Run GitVersion"
 
-  - powershell: |
-      Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-      Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
-    displayName: "Install PS Modules"
+  - powershell: ./tools/build.ps1
+    displayName: 'Execute Build'
 
-  - task: Pester@8
-    displayName: "Pester Test Runner"
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Release'
+    inputs:
+      PathtoPublish: Release
+      ArtifactName: Release
 
   - task: PublishTestResults@2
     displayName: "Publish Pester test results"
