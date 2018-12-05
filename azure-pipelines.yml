@@ -1,15 +1,21 @@
 pool:
-  vmImage: vs2017-win2016
+  vmImage: ubuntu-16.04
 
 steps:
+  - task: GitVersionNetCore@4
+    displayName: 'Run GitVersion'
+
   - task: PowerShell@2
+    displayName: 'Run Pester tests'
     inputs:
       targetType: 'filePath'
       filePath: '$(System.DefaultWorkingDirectory)\tools\Run-PesterInVSTS.ps1'
       arguments: '-outputFile $(System.DefaultWorkingDirectory)\Test-Pester.XML'
+      pwsh: true
       continueOnError: true
 
   - task: PublishTestResults@2
+    displayName: 'Publish Pester test results'
     inputs:
       testRunner: 'NUnit'
       testResultsFiles: '$(System.DefaultWorkingDirectory)\Test-Pester.XML'
