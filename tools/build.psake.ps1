@@ -174,7 +174,7 @@ Task CreateArchive {
     $Destination = "$($ReleaseDirectoryPath).zip"
 
     if ($ENV:TF_BUILD){
-        $Destination = "$($ReleaseDirectoryPath).$($ENV:BUILD_BUILDNUMBER).zip"
+        $Destination = "$($ReleaseDirectoryPath).$($ENV:GitVersion_MajorMinorPatch).zip"
     }
 
     if (Test-Path -Path $Destination) {
