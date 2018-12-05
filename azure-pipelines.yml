@@ -1,0 +1,14 @@
+pool:
+  vmImage: vs2017-win2016
+
+steps:
+  - task: Pester
+    inputs:
+      scriptFolder: $(System.DefaultWorkingDirectory)\*
+      resultsFile: $(System.DefaultWorkingDirectory)\Test-Pester.XML
+      run32Bit: False
+
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: NUnit
+      testResultsFiles: $(System.DefaultWorkingDirectory)\Test-Pester.XML
