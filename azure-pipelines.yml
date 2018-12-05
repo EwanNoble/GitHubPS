@@ -1,8 +1,10 @@
 pool:
   vmImage: ubuntu-16.04
 
+name: $(GitVersion.MajorMinorPatch)
+
 steps:
-  - task: GitVersionNetCore@4
+  - task: GitVersion@4
     displayName: 'Run GitVersion'
 
   - task: PowerShell@2
